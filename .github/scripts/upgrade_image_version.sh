@@ -36,7 +36,7 @@ if [ -z "$GH_TOKEN" ]; then
 fi
 
 # https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#create-a-pull-request
-result=$(curl -s -X POST -H "Authorization: token $GH_TOKEN" -d "{\"head\":\"$branch_name\",\"base\":\"main\",\"title\":\"Upgrade Github Runner ($UPGRADE_VERSION)\",\"body\":\"Automatic upgrade of Github Runner to $UPGRADE_VERSION\"}" "https://api.github.com/repos/outscale-mdr/outscale-github-runner/pulls")
+result=$(curl -s -X POST -H "Authorization: token $GH_TOKEN" -d "{\"head\":\"$branch_name\",\"base\":\"main\",\"title\":\"Upgrade Github Runner ($UPGRADE_VERSION)\",\"body\":\"Automatic upgrade of Github Runner to $UPGRADE_VERSION\"} \n **Changelog**: https://github.com/myoung34/docker-github-actions-runner/compare/$CURRENT_VERSION...$UPGRADE_VERSION" "https://api.github.com/repos/outscale-mdr/outscale-github-runner/pulls")
 
 errors=$(echo $result | jq .errors)
 
